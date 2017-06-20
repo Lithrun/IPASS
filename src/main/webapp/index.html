@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="CSS/alert box.css">
+	<link href='imports/fullcalendar-3.4.0/fullcalendar.min.css' rel='stylesheet' />
+	<link href='imports/fullcalendar-3.4.0/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+	<link href="imports/datetimepicker/jquery.datetimepicker.css" type="text/css" rel="stylesheet" />
+	<title>Eventsystem</title>
+	</head>
+	<body>
+	
+	
+		<div class="sidebar" style="display:none" id="sidebar">
+			<button class="sidebarbutton close" onclick="closeSidebar()">Close &times;</button>
+			<button class="sidebarbutton" onclick="showInfo()"><img class="sidebarbutton image" src="images/info.png"></button>
+			<button class="sidebarbutton" onclick="showCalendar()"><img class="sidebarbutton image" src="images/calendar.png"></button>
+			<button class="sidebarbutton" id="addEventButton" onclick="showEvenementForm()"><img class="sidebarbutton image" src="images/add.png"></button>
+			<button class="sidebarbutton" onclick="showLogin()"><img class="sidebarbutton image" src="images/logout.png"></button>
+		</div>
+		
+		<div class="main" id="main">
+			<div class="header">
+				<button class="sidebaropen" id="sidebarbutton" onclick="openSidebar()">&#9776;</button>
+				<div id="titel"></div>
+			</div>
+			<div id="calendar"></div>
+			<div class="container"></div>
+	
+		</div>
+	
+		<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+		<script src='imports/fullcalendar-3.4.0/lib/moment.min.js'></script>
+		<script src='imports/fullcalendar-3.4.0/lib/jquery.min.js'></script>
+		<script src='imports/fullcalendar-3.4.0/fullcalendar.min.js'></script>
+		<script src='imports/fullcalendar-3.4.0/locale/nl.js'></script>
+		<script src="imports/datetimepicker/build/jquery.datetimepicker.full.js"></script>
+		<script src="javascript.js"></script>
+	</body>	
+</html>
