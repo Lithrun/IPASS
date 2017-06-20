@@ -700,7 +700,7 @@ function loginButton() {
 	$("#login").click(function(event) {
 		var data = $("#loginform").serialize();
 		
-		$.post("/eventapp/restservices/authentication", data, function(response) {
+		$.post(uri + "authentication", data, function(response) {
 			console.log("Login succes!");
 			var storage = JSON.parse(response);
 			window.sessionStorage.setItem("sessionToken", storage.token);
