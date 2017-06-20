@@ -4,11 +4,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class BaseDAO {
-	final Configuration cfg = new Configuration().setProperty("hibernate.connection.url", System.getenv("DATABASE_URL"));
-	private SessionFactory factory = cfg.configure().buildSessionFactory();
+	
+	private Configuration factory = new Configuration().configure();
 	
 	protected final SessionFactory getConnection(){
-		return factory ;
+		System.out.println(System.getenv("DATABASE_URL"));
+		factory.setProperty("hibernate.connection.url", System.getenv("DATABASE_URL"));
+		return factory.buildSessionFactory() ;
 	}
 	
 }

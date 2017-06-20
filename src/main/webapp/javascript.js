@@ -1,5 +1,6 @@
 var role = '';
-var uri = '/restservices/';//'/eventapp/restservices/';
+//var uri = '/restservices/';
+var uri = '/eventapp/restservices/';
 
 //get
 
