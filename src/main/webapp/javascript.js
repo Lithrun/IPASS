@@ -1,6 +1,6 @@
 var role = '';
-var uri = '/restservices/';
-//var uri = '/eventapp/restservices/';
+var uri = '/restservices/'; // heroku
+//var uri = '/eventapp/restservices/'; // localhost
 
 
 //get
@@ -638,11 +638,6 @@ function showLogin(){
 	loginButton();
 	closeSidebar();
 	
-}
-
-function showInfo(){
-	//optioneel
-	alert("Informatie...");
 }
 
 function showEnquete(){
