@@ -13,12 +13,12 @@
 
    <!-- Assume test is the database name -->
   
-  <!-- voor lokaal testen als heroku niet functioneert
+  <!--  
    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/eventsystem</property>
    <property name="hibernate.connection.username">postgres</property>
    <property name="hibernate.connection.password">admin</property>
   -->
-     
+    
    <property name="hibernate.connection.url">jdbc:postgresql://ec2-79-125-118-221.eu-west-1.compute.amazonaws.com:5432/d8l6jat1b5v5sq?ssl=true</property>
    <property name="hibernate.connection.username">oabqgaymlrcdjf</property>
    <property name="hibernate.connection.password">a2aa59e1ad7b113c3ceb621bd227e29efab703c4ad798644c5aae11ab7ef93e1</property>
