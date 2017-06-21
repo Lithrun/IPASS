@@ -997,7 +997,7 @@ function initPage() {
 		header: {
 			left: 'prev,next today',
 			center: 'title',
-			right: 'month,agendaWeek,basicDay,listMonth,listYear'
+			right: 'month,listMonth'
 		},
 		defaultView: 'month',
 		defaultDate: getTodayDate(),
