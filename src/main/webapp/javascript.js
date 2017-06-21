@@ -2,6 +2,7 @@ var role = '';
 var uri = '/restservices/';
 //var uri = '/eventapp/restservices/';
 
+
 //get
 
 function getTodayDate(){
