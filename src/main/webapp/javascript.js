@@ -1004,14 +1004,7 @@ function initPage() {
 		eventClick: function(calEvent, jsEvent, view) {
 
 			getEvenement(calEvent.id, calEvent.status, calEvent.gebruikerstatus);
-			//showEvenement(calEvent.id, calEvent.status, calEvent.gebruikerstatus);
 			$("#calendar").hide();
-			//alert('Event: ' + calEvent.id);
-			//alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-			//alert('View: ' + view.name);
-
-			// change the border color just for fun
-			//$(this).css('border-color', 'red');
 
 		},
 		height: $(window).height()*0.83,
