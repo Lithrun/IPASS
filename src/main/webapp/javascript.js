@@ -622,8 +622,8 @@ function showLogin(){
 			+	"<p>Welkom bij het evenement systeem</p>"
 			+	"<p>Vul uw emailadres en wachtwoord in om verder te gaan</p>"
 			+	"<form id='loginform'> "
-					+	"<input type='text' value='nickwindt@hotmail.nl' name='emailadres' placeholder='Emailadres...' /><br>"
-					+	"<input type='password' value='wachtwoord' name='password' placeholder='Wachtwoord...'/><br>"
+					+	"<input type='text' value='' name='emailadres' placeholder='Emailadres...' /><br>"
+					+	"<input type='password' value='' name='password' placeholder='Wachtwoord...'/><br>"
 			+	"</form></div>";
 	$(".container").html(html);
 	html = "<h1>Evenement Systeem</h1>";
