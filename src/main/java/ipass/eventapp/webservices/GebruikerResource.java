@@ -57,7 +57,7 @@ public class GebruikerResource {
 	
 	//http://localhost:4711/eventapp/restservices/gebruikers?evenementen=true
 	@GET
-	//@RolesAllowed({"eventmanager","gebruiker"})
+	@RolesAllowed({"eventmanager"})
 	@Produces("application/json")
 	public Response getAllGebruikers(@QueryParam("evenementen") boolean evenementen) {
 		try {
@@ -81,7 +81,7 @@ public class GebruikerResource {
 	//http://localhost:4711/eventapp/restservices/gebruikers/1?evenementen=true
 	@GET
 	@Path("{id}")
-	//@RolesAllowed({"eventmanager","gebruiker"})
+	@RolesAllowed({"eventmanager","gebruiker"})
 	@Produces("application/json")
 	public Response getGebruikerById(@PathParam("id") int id, @QueryParam("evenementen") boolean evenementen) {
 		try {
@@ -100,7 +100,7 @@ public class GebruikerResource {
 	
 	@PUT
 	@Path("/gebruikerstatus")
-	//@RolesAllowed({"eventmanager","gebruiker"})
+	@RolesAllowed({"eventmanager","gebruiker"})
 	public Response updateGebruikerStatusByGebruikerIdAndEvenementId(@QueryParam("gebruikerid") int gebruikerid, @QueryParam("evenementid") int evenementid, @QueryParam("gebruikerstatus") String gebruikerstatus) {
 		try {
 			System.out.println("Updating gebruiker with ID: " + gebruikerid);

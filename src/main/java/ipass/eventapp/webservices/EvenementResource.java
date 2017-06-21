@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -117,7 +118,7 @@ public class EvenementResource {
 		
 		//http://localhost:4711/eventapp/restservices/evenementen?enquete=false&gebruikers=false&enqueteantwoorden=false
 		@GET
-		//@RolesAllowed({"eventmanager"})
+		@RolesAllowed({"eventmanager"})
 		@Produces("application/json")
 		public Response getAllEvenementen( @QueryParam("enquete") boolean enquete, @QueryParam("gebruikers") boolean gebruikers, @QueryParam("enqueteantwoorden") boolean enqueteantwoorden) {
 			try {
@@ -141,7 +142,7 @@ public class EvenementResource {
 		//http://localhost:4711/eventapp/restservices/evenementen/1?enquete=false&gebruikers=false&enqueteantwoorden=false
 		@GET
 		@Path("{id}")
-		//@RolesAllowed({"eventmanager","gebruiker"})
+		@RolesAllowed({"eventmanager","gebruiker"})
 		@Produces("application/json")
 		public Response getEvenementById(@PathParam("id") int id, @QueryParam("enquete") boolean enquete, @QueryParam("gebruikers") boolean gebruikers, @QueryParam("enqueteantwoorden") boolean enqueteantwoorden) {
 			try {
@@ -160,12 +161,71 @@ public class EvenementResource {
 		
 		@PUT
 		@Path("/status")
-		//@RolesAllowed({"eventmanager"})
+		@RolesAllowed({"eventmanager"})
 		public Response updateGebruikerStatusByGebruikerIdAndEvenementId(@QueryParam("evenementid") int evenementid, @QueryParam("status") String status) {
 			try {
 				System.out.println("Updating evenement with ID: " + evenementid);
 				EvenementService service = ServiceProvider.getEvenementService();
 				boolean resultaat = service.updateEvenementStatus(evenementid, status);
+				if (resultaat == true) {
+					return Response.ok().build();
+				} else {
+					return Response.status(Response.Status.NOT_FOUND).build();
+				}
+				
+			}catch (IllegalArgumentException e ) {
+				return Response.status(Response.Status.NOT_FOUND).build();
+			}
+			
+		}
+		
+		@POST
+		@Path("/enqueteresult")
+		@RolesAllowed({"gebruiker"})
+		public Response addEvenementEnquete(InputStream is) throws ParseException {
+			try {
+				Evenement evenement = inputStreamToEnqueteResult(is);
+				EvenementService service = ServiceProvider.getEvenementService();
+				boolean resultaat = service.addEvenement(evenement);
+				if (resultaat == true) {
+					return Response.ok().build();
+				} else {
+					return Response.status(Response.Status.NOT_FOUND).build();
+				}
+				
+			}catch (IllegalArgumentException e ) {
+				return Response.status(Response.Status.NOT_FOUND).build();
+			}
+		}
+		
+		@POST
+		@RolesAllowed({"eventmanager"})
+		public Response addEvenement(InputStream is) throws ParseException {
+			try {
+				System.out.println("Startin insert...");
+				Evenement evenement = inputStreamToEvenement(is,true);
+				EvenementService service = ServiceProvider.getEvenementService();
+				boolean resultaat = service.addEvenement(evenement);
+				if (resultaat == true) {
+					return Response.ok().build();
+				} else {
+					return Response.status(Response.Status.NOT_FOUND).build();
+				}
+				
+			}catch (IllegalArgumentException e ) {
+				return Response.status(Response.Status.NOT_FOUND).build();
+			}
+			
+		}
+		
+		@PUT
+		@RolesAllowed({"eventmanager"})
+		public Response updateEvenement(InputStream is) throws ParseException {
+			try {
+				System.out.println("Updating evenement...");
+				Evenement evenement = inputStreamToEvenement(is,true);
+				EvenementService service = ServiceProvider.getEvenementService();
+				boolean resultaat = service.updateEvenement(evenement);
 				if (resultaat == true) {
 					return Response.ok().build();
 				} else {
@@ -242,65 +302,6 @@ public class EvenementResource {
 			}
 			evenement.setEvenementEnquete(ee);
 			return evenement;
-		}
-		
-		@POST
-		@Path("/enqueteresult")
-		//@RolesAllowed({"gebruiker"})
-		public Response addEvenementEnquete(InputStream is) throws ParseException {
-			try {
-				Evenement evenement = inputStreamToEnqueteResult(is);
-				EvenementService service = ServiceProvider.getEvenementService();
-				boolean resultaat = service.addEvenement(evenement);
-				if (resultaat == true) {
-					return Response.ok().build();
-				} else {
-					return Response.status(Response.Status.NOT_FOUND).build();
-				}
-				
-			}catch (IllegalArgumentException e ) {
-				return Response.status(Response.Status.NOT_FOUND).build();
-			}
-		}
-		
-		@POST
-		//@RolesAllowed({"eventmanager"})
-		public Response addEvenement(InputStream is) throws ParseException {
-			try {
-				System.out.println("Startin insert...");
-				Evenement evenement = inputStreamToEvenement(is,true);
-				EvenementService service = ServiceProvider.getEvenementService();
-				boolean resultaat = service.addEvenement(evenement);
-				if (resultaat == true) {
-					return Response.ok().build();
-				} else {
-					return Response.status(Response.Status.NOT_FOUND).build();
-				}
-				
-			}catch (IllegalArgumentException e ) {
-				return Response.status(Response.Status.NOT_FOUND).build();
-			}
-			
-		}
-		
-		@PUT
-		//@RolesAllowed({"eventmanager"})
-		public Response updateEvenement(InputStream is) throws ParseException {
-			try {
-				System.out.println("Updating evenement...");
-				Evenement evenement = inputStreamToEvenement(is,true);
-				EvenementService service = ServiceProvider.getEvenementService();
-				boolean resultaat = service.updateEvenement(evenement);
-				if (resultaat == true) {
-					return Response.ok().build();
-				} else {
-					return Response.status(Response.Status.NOT_FOUND).build();
-				}
-				
-			}catch (IllegalArgumentException e ) {
-				return Response.status(Response.Status.NOT_FOUND).build();
-			}
-			
 		}
 		
 	

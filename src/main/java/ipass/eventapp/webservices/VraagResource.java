@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -32,7 +33,7 @@ public class VraagResource {
 	}
 		
 	@GET
-	//@RolesAllowed({"eventmanager","gebruiker"})
+	@RolesAllowed({"eventmanager","gebruiker"})
 	@Produces("application/json")
 	public Response getAllVragen() {
 		try {
@@ -54,7 +55,7 @@ public class VraagResource {
 		
 		@GET
 		@Path("{id}")
-		//@RolesAllowed({"eventmanager","gebruiker"})
+		@RolesAllowed({"eventmanager","gebruiker"})
 		@Produces("application/json")
 		public Response getVraagById(@PathParam("id") int id) {
 			try {

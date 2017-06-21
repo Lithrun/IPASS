@@ -14,34 +14,11 @@ import ipass.eventapp.persistence.GebruikerDAO;
 
 public class EvenementService {
 	
-	public static void main (String args[]){
-		EvenementService es = new EvenementService();
-		EvenementDAO edao = new EvenementDAO();
-		System.out.println("test");
-		es.setEvenementDAO(edao);
-		//gs.getGebruikerById(1, true);
-		Evenement evenement = es.getEvenementById(1,false, false, true);
-		for (EvenementEnquete ee : evenement.getEvenementEnquete()) {
-			System.out.println(ee.getGebruiker().getVoornaam());
-			System.out.println(ee.getVraag().getVraag());
-			System.out.println(ee.getAntwoord());
-		}
-//		for (GebruikerEvenement ge : evenement.getGebruikerEvenementen()) {
-//			System.out.println(ge.getPrimaryKey().getGebruiker().getAchternaam());
-//		}
-	}
-	
 	private EvenementDAO edao;
 
 	public void setEvenementDAO(EvenementDAO edao) {
 		this.edao = edao;
 	}
-	
-	
-//	public List<Enquete> getAllEnquetes() {
-//		return edao.findAll();
-//	}
-// OUD
 		
 	public List<Evenement> getAllEvenementen(boolean enquete, boolean gebruikers, boolean enqueteantwoorden) {
 		Session session = edao.getNewSession();

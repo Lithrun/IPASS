@@ -13,13 +13,6 @@ import ipass.eventapp.persistence.GebruikerDAO;
 
 public class GebruikerService {
 	
-	public static void main (String[] args) {
-		GebruikerService service = new GebruikerService();
-		GebruikerDAO gdao = new GebruikerDAO();
-		service.setGebruikerDAO(gdao);
-		service.updateGebruikerEvenementStatus(2, 1, "ingeschreven");
-	}
-	
 	private GebruikerDAO gdao;
 
 	public void setGebruikerDAO(GebruikerDAO gdao) {

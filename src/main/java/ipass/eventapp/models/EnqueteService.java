@@ -14,12 +14,7 @@ public class EnqueteService {
 	public void setEnqueteDAO(EnqueteDAO edao) {
 		this.edao = edao;
 	}
-	
-//	public List<Enquete> getAllEnquetes() {
-//		return edao.findAll();
-//	}
-// OUD
-		
+			
 	public List<Enquete> getAllEnquetes(boolean vragen) {
 		Session session = edao.getNewSession();
 		Query query = session.createQuery("FROM Enquete");
