@@ -84,7 +84,7 @@ public class EnqueteResource {
 		//http://localhost:4711/eventapp/restservices/enquetes/1?vragen=true
 		@GET
 		@Path("{id}")
-		@RolesAllowed({"eventmanager","gebruiker"})
+		//@RolesAllowed({"eventmanager","gebruiker"})
 		@Produces("application/json")
 		public Response getAllEnquetes(@PathParam("id") int id, @DefaultValue("true") @QueryParam("boolean") boolean vragen) {
 			try {	
