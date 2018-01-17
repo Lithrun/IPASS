@@ -61,7 +61,8 @@ public class EnqueteResource {
 	}
 		
 		@GET
-		@RolesAllowed({"eventmanager","gebruiker"})
+		@PermitAll
+		//@RolesAllowed({"eventmanager","gebruiker"})
 		@Produces("application/json")
 		public Response getAllEnquetes(@QueryParam("vragen") boolean vragen) {
 			try {
